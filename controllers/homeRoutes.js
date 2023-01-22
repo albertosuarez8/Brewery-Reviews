@@ -16,15 +16,12 @@ router.get('/newpost', async (req, res) => {
     }
 });
 
-router.get('/newpost/createpost/:sport/stadium/section', async (req, res) => {
-    try {
-        let postDetail = {}
-        res.render('createpost', {
-            postDetail: postDetail
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
+router.get('/newpost/createpost', async (req, res) => {
+    const stadium = req.query.stadium;
+    const section = req.query.section;
+    res.render('createpost', {
+        postDetail: {stadium: stadium, section: section}
+    });
 });
 
 

@@ -1,19 +1,8 @@
 const newPost = async (event) => {
-    event.preventDefault();
-
-    const sport = document.querySelector('#sports').value.trim();
-    const stadium = document.querySelector('#stadium').value.trim();
-    const section = document.querySelector('#section').value.trim();
-
-    if (sport && stadium && section) {
-        let postDetail = {sport: sport, stadium: stadium, section: section};
-        const response = await fetch('/newpost/createpost', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ postDetail }),
-        });
-    }
+    let postData = {stadium: document.querySelector('#stadium').value.trim(),
+    section: document.querySelector('#section').value.trim()};
+    document.location.replace('/newpost/createpost?stadium=' + postData.stadium + '&section=' + postData.section);
 };
 
 
-document.querySelector('#post-form').addEventListener('submit', newPost);
+document.querySelector('#post-form').addEventListener('click', newPost);
