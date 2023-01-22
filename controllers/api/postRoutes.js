@@ -23,13 +23,15 @@ router.post('/', async (req, res) => {
 router.put('/update', async (req, res) => {
     try {
         const post = await Post.findByPk(req.body.id);
-        post.update({ description: req.body.description,
+        post.update({
+            description: req.body.description,
             stadium: req.body.stadium,
             rating: req.body.rating,
             section: req.body.section,
             image: req.body.image,
             user_id: user.id,
-            date: new Date(),});
+            date: new Date(),
+        });
         res.status(200).json(post);
     } catch (err) {
         console.log(err);
