@@ -1,4 +1,4 @@
-const newPost = async (event) => {
+const newPost = async () => {
     let postData = {stadium: document.querySelector('#stadium').value.trim(),
     section: document.querySelector('#section').value.trim()};
     document.location.replace('/newpost/createpost?stadium=' + postData.stadium + '&section=' + postData.section);

@@ -3,15 +3,32 @@
         <div>Image</div>
     </div>
     <div class="rightside">
-        <div class="rating">
-            Rating
-        </div>
-        <textarea class="text">
-        </textarea>
+        <input class="rating" placeholder="Input Rating Here">
+        </input>
+        <textarea class="text" placeholder="Input Review Here"></textarea>
         <div id="create-button">
             <button id="new-post-btn">
                 Create
             </button>
         </div>
     </div>
+    <div>{{postDetail.stadium}}</div>
+    <div>Section: {{postDetail.section}}</div>
 </div>
+
+<script>
+    const postDetailSection = "{{postDetail.section}}"
+    const postDetailStadium = "{{postDetail.stadium}}"
+
+    const newPost = async () => {
+        let postData = {
+            description: document.querySelector('.text').value.trim(),
+            rating: document.querySelector('.rating').value.trim()
+        };
+        console.log(postData);
+        console.log(postDetailSection);
+        console.log(postDetailStadium);
+    }
+
+    document.querySelector('#new-post-btn').addEventListener('click', newPost);
+</script>
