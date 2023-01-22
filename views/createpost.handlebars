@@ -1,6 +1,10 @@
 <div style="display: flex;">
     <div class="leftside">
-        <div>Image</div>
+        <div id="drop-area" accept="image/*" style="border: 2px solid blue; height: 250px; width: 250px;">
+            Drag Image here!
+        </div>
+        <input type="file" id="file-input" accept="image/*" style="display: none;">
+        <input type="button" value="Upload Image" onclick="document.getElementById('file-input').click();" />
     </div>
     <div class="rightside">
         <input class="rating" placeholder="Input Rating Here">
@@ -16,19 +20,21 @@
     <div>Section: {{postDetail.section}}</div>
 </div>
 
+<script src="/js/createpost.js"></script>
 <script>
-    const postDetailSection = "{{postDetail.section}}"
-    const postDetailStadium = "{{postDetail.stadium}}"
+    const postDetailSection = "{{postDetail.section}}";
+    const postDetailStadium = "{{postDetail.stadium}}";
 
     const newPost = async () => {
         let postData = {
             description: document.querySelector('.text').value.trim(),
             rating: document.querySelector('.rating').value.trim()
         };
-        console.log(postData);
-        console.log(postDetailSection);
-        console.log(postDetailStadium);
     }
 
     document.querySelector('#new-post-btn').addEventListener('click', newPost);
+    
+
+
+
 </script>
