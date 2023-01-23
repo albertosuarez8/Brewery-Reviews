@@ -20,7 +20,7 @@ Post.init(
             allowNull: false,
         },
         image: {
-            type: DataTypes.STRING,
+            type: DataTypes.BLOB('long'),
             allowNull: false,
         },
         section: {
@@ -31,14 +31,16 @@ Post.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
-        },
+        // Removed User_id in order to create to posts
+
+        // user_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     references: {
+        //         model: 'user',
+        //         key: 'id',
+        //     },
+        // },
         date: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -49,6 +51,7 @@ Post.init(
         freezeTableName: true,
         underscored: true,
         modelName: 'post',
+        collate: 'utf8mb4_bin'
     }
 );
 
