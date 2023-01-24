@@ -1,0 +1,91 @@
+<div style="display: flex;">
+    <div class="leftside">
+        <div id="drop-area" accept="image/*" style="border: 2px solid blue; height: 250px; width: 250px;">
+            Drag Image here! (.pngs ONLY!)
+        </div>
+        <input type="file" id="file-input" accept="image/*" style="display: none;">
+        <input type="button" value="Upload Image" onclick="document.getElementById('file-input').click();" />
+    </div>
+    <div class="rightside">
+        <input class="rating" placeholder="Input Rating Here">
+        </input>
+        <textarea class="text" placeholder="Input Review Here"></textarea>
+        <div id="create-button">
+            <button id="new-post-btn">
+                Create
+            </button>
+        </div>
+    </div>
+    <div>{{postDetail.stadium}}</div>
+    <div>Section: {{postDetail.section}}</div>
+</div>
+
+<script>
+    const section = "{{postDetail.section}}";
+    const stadium = "{{postDetail.stadium}}";
+    const dropArea = document.querySelector('#drop-area');
+    const fileInput = document.querySelector('#file-input');
+    var imageDataBase64;
+
+
+    const handleFiles = (files) => {
+        let reader = new FileReader();
+        reader.onloadend = function () {
+            imageDataBase64 = reader.result;
+            document.querySelector("#post-img").src = imageDataBase64;
+        }
+        let y = reader.readAsDataURL(files[0]);
+        reader.addEventListener('load', function () {
+            let preview = document.createElement('img');
+            preview.style.height = "250px";
+            preview.style.width = "250px";
+            preview.id = "post-img";
+            if (document.querySelector('#drop-area').hasChildNodes()) {
+                document.querySelector('#drop-area').firstChild.remove();
+            }
+            document.querySelector('#drop-area').appendChild(preview);
+        });
+    }
+
+    const createPost = async (event) => {
+        event.preventDefault();
+        const description = document.querySelector('.text').value.trim();
+        const rating = document.querySelector('.rating').value.trim();
+        if (description && rating && imageDataBase64 && section && stadium) {
+            const response = await fetch('/api/posts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ rating, description, image: imageDataBase64, section: section, stadium: stadium }),
+            });
+            if (response.ok) {
+                document.location.replace('/dashboard');
+            } else {
+                alert('Failed to post');
+            }
+        }
+        console.log()
+    }
+
+    document.querySelector('#new-post-btn').addEventListener('click', createPost);
+    dropArea.addEventListener("dragover", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    });
+    dropArea.addEventListener("drop", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        var files = event.dataTransfer.files;
+        if (files[0].type.match(/^image\//)) {
+            handleFiles(files);
+        } else {
+            alert(files[0].name + " is not an image file!")
+        }
+    });
+    fileInput.addEventListener("change", function (event) {
+        event.preventDefault();
+        if (fileInput.files) {
+            handleFiles(fileInput.files);
+        }
+    });
+
+</script>
