@@ -18,7 +18,7 @@
                     preview.id = "post-img";
                     let splitImage = x[z].image.split("dataimage/pngbase64");
                     let newImage = 'data:image/png;base64,' + splitImage[1];
-                    preview.src = newImage.replace("=", "");
+                    preview.src = newImage.slice(0,-1);
                     document.querySelector('#get-values').appendChild(preview);
                 }
 
