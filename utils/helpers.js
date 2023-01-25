@@ -1,4 +1,5 @@
 module.exports = {
-    get_log: () => {console.log('Hello World')
-},
+    format_time:(date) => {
+    return date.toDateString();
+}
 };

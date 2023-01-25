@@ -34,7 +34,7 @@
                     <div class="navbar-item">
                         <div class="buttons">
                             {{#if logged_in}}
-                            <a href="/logout" class="button is-light">
+                            <a id="logout" class="button is-light">
                                 Log Out
                             </a>
                             {{else}}
@@ -72,8 +72,8 @@
 
                 });
             });
-
         });
     </script>
+    <script src="/js/logout.js"></script>
 </body>
 </html>

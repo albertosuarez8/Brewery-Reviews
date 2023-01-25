@@ -8,6 +8,14 @@ router.get('/', async (req, res) => {
             include: [{ model: User }],
         })
         const posts = postData.map((project) => project.get({ plain: true }));
+        posts.map(x=> {
+            x.image = Buffer.from(x.image).toString('base64');
+        })
+        for (z = 0; z < posts.length; z++) {
+            let splitImage = posts[z].image.split("dataimage/pngbase64");
+            let newImage = 'data:image/png;base64,' + splitImage[1];
+            posts[z].image =  newImage.slice(0,-1);
+        }
         res.render('home', {
             posts,
             logged_in: req.session.logged_in
@@ -19,9 +27,17 @@ router.get('/', async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
     if (req.session.logged_in) {
-        const user = await User.findOne({ where: { username: req.session.username } });
+        const user = await User.findOne({ where: { email: req.session.email } });
         const postData = await Post.findAll({ where: { user_id: user.id } });
         const posts = postData.map((project) => project.get({ plain: true }));
+        posts.map(x=> {
+            x.image = Buffer.from(x.image).toString('base64');
+        })
+        for (z = 0; z < posts.length; z++) {
+            let splitImage = posts[z].image.split("dataimage/pngbase64");
+            let newImage = 'data:image/png;base64,' + splitImage[1];
+            posts[z].image =  newImage.slice(0,-1);
+        }
         res.render('dashboard', {
             logged_in: req.session.logged_in,
             posts

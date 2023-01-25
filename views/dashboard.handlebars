@@ -1,31 +1,8 @@
 <a href="/dashboard/newpost">
     New Post
 </a>
-<button id="get-values">Testing Images on DB</button>
+{{#each posts as |post|}}
+    <img src="{{post.image}}"></img>
+    {{/each}}
 
-<script>
-    const postFormHandler = async (event) => {
-
-        const response = await fetch('/api/posts/post', {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-        })
-            .then(response => response.json().then(x => {
-                for (z = 0; z < x.length; z++) {
-                    let preview = document.createElement('img');
-                    preview.style.height = "250px";
-                    preview.style.width = "250px";
-                    preview.id = "post-img";
-                    let splitImage = x[z].image.split("dataimage/pngbase64");
-                    let newImage = 'data:image/png;base64,' + splitImage[1];
-                    preview.src = newImage.replace("=", "");
-                    document.querySelector('#get-values').appendChild(preview);
-                }
-
-            }))
-            .then(data => console.log(data))
-    };
-    document
-        .querySelector('#get-values')
-        .addEventListener('click', postFormHandler);
-</script>
+<script src="js/dashboard.js"></script>
