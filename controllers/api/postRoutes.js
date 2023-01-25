@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, User } = require('../../models');
 
-router.get('/post', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         let x = await Post.findAll();
         x.map(x=> {
@@ -15,14 +15,14 @@ router.get('/post', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        // const user = await User.findOne({ where: { username: req.session.email } });
+        const user = await User.findOne({ where: { email: req.session.email } });
         const postData = await Post.create({
             description: req.body.description,
             stadium: req.body.stadium,
             rating: req.body.rating,
             section: req.body.section,
             image: Buffer.from(req.body.image, 'base64'),
-            // user_id: user.id,
+            user_id: user.id,
             date: new Date(),
         });
         res.status(200).json(postData);
@@ -41,7 +41,7 @@ router.put('/update', async (req, res) => {
             rating: req.body.rating,
             section: req.body.section,
             image: req.body.image,
-            // user_id: user.id,
+            user_id: user.id,
             date: new Date(),
         });
         res.status(200).json(post);

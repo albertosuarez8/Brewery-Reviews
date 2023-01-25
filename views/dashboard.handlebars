@@ -1,8 +1,11 @@
-<a href="/newpost">
+<a href="/dashboard/newpost">
     New Post
 </a>
-<button id="get-values">Testing Images on DB</button>
+{{#each posts as |post|}}
+    <img src="{{post.image}}"></img>
+    {{/each}}
 
+<<<<<<< 43-certain-images-are-not-populating-from-db
 <script>
     const postFormHandler = async (event) => {
 
@@ -29,3 +32,6 @@
         .querySelector('#get-values')
         .addEventListener('click', postFormHandler);
 </script>
+=======
+<script src="js/dashboard.js"></script>
+>>>>>>> dev
