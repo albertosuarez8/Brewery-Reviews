@@ -1,7 +1,7 @@
 const newPost = async () => {
     let postData = {stadium: document.querySelector('#stadium').value.trim(),
     section: document.querySelector('#section').value.trim()};
-    document.location.replace('/newpost/createpost?stadium=' + postData.stadium + '&section=' + postData.section);
+    document.location.replace('/dashboard/newpost/createpost?stadium=' + postData.stadium + '&section=' + postData.section);
 };
 
 

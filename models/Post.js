@@ -31,16 +31,14 @@ Post.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        // Removed User_id in order to create to posts
-
-        // user_id: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        //     references: {
-        //         model: 'user',
-        //         key: 'id',
-        //     },
-        // },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
+        },
         date: {
             type: DataTypes.DATE,
             allowNull: false,
