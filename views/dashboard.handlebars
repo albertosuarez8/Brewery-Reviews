@@ -1,37 +1,22 @@
-<a href="/dashboard/newpost">
-    New Post
-</a>
-{{#each posts as |post|}}
-    <img src="{{post.image}}"></img>
-    {{/each}}
+<div class="container">
+    <article class="message">
+        <div class="message-header is-centered">
+            <p>Brewery Name</p>
+        </div>
 
-<<<<<<< 43-certain-images-are-not-populating-from-db
-<script>
-    const postFormHandler = async (event) => {
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-5by6">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                </figure>
+            </div>
+        </div>
+    </article>
 
-        const response = await fetch('/api/posts/post', {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-        })
-            .then(response => response.json().then(x => {
-                for (z = 0; z < x.length; z++) {
-                    let preview = document.createElement('img');
-                    preview.style.height = "250px";
-                    preview.style.width = "250px";
-                    preview.id = "post-img";
-                    let splitImage = x[z].image.split("dataimage/pngbase64");
-                    let newImage = 'data:image/png;base64,' + splitImage[1];
-                    preview.src = newImage.slice(0,-1);
-                    document.querySelector('#get-values').appendChild(preview);
-                }
+    <button class="button is-large is-responsive is-primary">
+        <a href="/newpost">
+            New Post
+        </a>
+    </button>
+</div>
 
-            }))
-            .then(data => console.log(data))
-    };
-    document
-        .querySelector('#get-values')
-        .addEventListener('click', postFormHandler);
-</script>
-=======
-<script src="js/dashboard.js"></script>
->>>>>>> dev

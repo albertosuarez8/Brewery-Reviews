@@ -1,3 +1,85 @@
+<div class="dropdown is-active">
+    <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span>Select an Event</span>
+            <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+        </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+            <a href="#" class="dropdown-item">
+                Baseball
+            </a>
+            <a class="dropdown-item">
+                Basketball
+            </a>
+            <a href="#" class="dropdown-item is-active">
+                Football
+            </a>
+            <a href="#" class="dropdown-item">
+                Soccer
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="dropdown is-active">
+    <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span>Select a Stadium</span>
+            <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+        </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+            <a href="#" class="dropdown-item">
+                Raymond James Stadium
+            </a>
+            <a class="dropdown-item">
+                Fenway Park
+            </a>
+            <a href="#" class="dropdown-item is-active">
+                Stadium Name
+            </a>
+            <a href="#" class="dropdown-item">
+                Stadium Name
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<section class="section">
+			<div class="container">
+				<!-- Start Carousel -->
+				<div id="carousel-demo" class="carousel">
+					<div class="item-1">
+						<!-- Slide Content -->
+					</div>
+					<div class="item-2">
+						<!-- Slide Content -->
+					</div>
+					<div class="item-3">
+						<!-- Slide Content -->
+					</div>
+				</div>
+				<!-- End Carousel -->
+			</div>
+		</section>
+
+		<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+		<script>
+		bulmaCarousel.attach('#carousel-demo', {
+			slidesToScroll: 1,
+			slidesToShow: 4
+		});
+		</script>
+
+{{!--
 <div style="display: flex;">
     <div class="leftside">
         <label for="sports"></label>
@@ -25,6 +107,6 @@
         </div>
     </div>
 
-</div>
+</div> --}}
 
 <script src="/js/newPost.js"></script>
