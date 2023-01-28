@@ -20,7 +20,7 @@ Post.init(
             allowNull: false,
         },
         image: {
-            type: DataTypes.STRING,
+            type: DataTypes.BLOB('long'),
             allowNull: false,
         },
         section: {
@@ -49,6 +49,7 @@ Post.init(
         freezeTableName: true,
         underscored: true,
         modelName: 'post',
+        collate: 'utf8mb4_bin'
     }
 );
 

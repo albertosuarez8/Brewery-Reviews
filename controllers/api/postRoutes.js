@@ -1,15 +1,27 @@
 const router = require('express').Router();
 const { Post, User } = require('../../models');
 
+router.get('/', async (req, res) => {
+    try {
+        let x = await Post.findAll();
+        x.map(x=> {
+            x.image = Buffer.from(x.image).toString('base64');
+        })
+        res.status(200).json(x);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.post('/', async (req, res) => {
     try {
-        const user = await User.findOne({ where: { username: req.session.email } });
+        const user = await User.findOne({ where: { email: req.session.email } });
         const postData = await Post.create({
             description: req.body.description,
             stadium: req.body.stadium,
             rating: req.body.rating,
             section: req.body.section,
-            image: req.body.image,
+            image: Buffer.from(req.body.image, 'base64'),
             user_id: user.id,
             date: new Date(),
         });
