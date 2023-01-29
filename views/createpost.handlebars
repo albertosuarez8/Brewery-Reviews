@@ -9,10 +9,7 @@
             <br>
             <div class="file">
                 <label class="file-label">
-                    <input class="file-input" type="file" name="resume">
                     <input type="file" id="file-input" accept="image/*" style="display: none;">
-                    {{!-- <input type="button" value="Upload Image"
-                        onclick="document.getElementById('file-input').click();" /> --}}
                     <span class="has-background-warning-dark file-cta">
                         <span class="has-text-warning-light file-label">
                             Upload a file…
@@ -48,7 +45,8 @@
 
 <script>
 
-    bulmaSlider.attach();
+{{!-- Commented this out since it was affecting the drag/drop --}}
+    {{!-- bulmaSlider.attach(); --}}
 
     const section = "{{postDetail.section}}";
     const stadium = "{{postDetail.stadium}}";
