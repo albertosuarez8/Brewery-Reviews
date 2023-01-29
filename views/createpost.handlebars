@@ -1,26 +1,55 @@
-<div style="display: flex;">
-    <div class="leftside">
-        <div id="drop-area" accept="image/*" style="border: 2px solid blue; height: 250px; width: 250px;">
-            Drag Image here! (.pngs ONLY!)
+<div class="card is-responsive is-centered" >
+
+    {{!-- this is the upload and drag image section --}}
+    <div class="container column" style="display: flex;">
+        <div class="column card leftside">
+            <div id="drop-area" accept="image/*" style="border: 2px solid; height: 250px; width: 250px;">
+                Drag Image here! (.pngs ONLY!)
+            </div>
+            <br>
+            <div class="file">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="resume">
+                    <input type="file" id="file-input" accept="image/*" style="display: none;">
+                    {{!-- <input type="button" value="Upload Image"
+                        onclick="document.getElementById('file-input').click();" /> --}}
+                    <span class="has-background-warning-dark file-cta">
+                        <span class="has-text-warning-light file-label">
+                            Upload a file…
+                        </span>
+                    </span>
+                </label>
+            </div>
+
         </div>
-        <input type="file" id="file-input" accept="image/*" style="display: none;">
-        <input type="button" value="Upload Image" onclick="document.getElementById('file-input').click();" />
-    </div>
-    <div class="rightside">
-        <input class="rating" placeholder="Input Rating Here">
-        </input>
-        <textarea class="text" placeholder="Input Review Here"></textarea>
-        <div id="create-button">
-            <button id="new-post-btn">
-                Create
-            </button>
+
+        {{!-- This is the raitng and review section --}}
+        <div class="column rightside">
+            {{!-- <input class="rating" placeholder="Input Rating Here">
+            </input> --}}
+            <input id="sliderWithValue" class="slider has-output-tooltip is-fullwidth is-medium is-warning is-circle"
+                step="1" min="0" max="5" value="3" type="range">
+            <output for="sliderWithValue"></output>
+
+            <input class="input is-large text" type="text" placeholder="Input Review Here">
+            {{!-- <textarea class="text" placeholder="Input Review Here"></textarea> --}}
+            <div id="create-button">
+                <button class="button has-background-warning-dark has-text-warning-light" id="new-post-btn"
+                    href="/dashboard">
+                    Create Post
+                </button>
+            </div>
         </div>
+        <div>{{postDetail.stadium}}</div>
+        <br>
+        <div class="column">Section: {{postDetail.section}}</div>
     </div>
-    <div>{{postDetail.stadium}}</div>
-    <div>Section: {{postDetail.section}}</div>
 </div>
 
 <script>
+
+    bulmaSlider.attach();
+
     const section = "{{postDetail.section}}";
     const stadium = "{{postDetail.stadium}}";
     const dropArea = document.querySelector('#drop-area');
@@ -87,5 +116,7 @@
             handleFiles(fileInput.files);
         }
     });
+
+
 
 </script>

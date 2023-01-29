@@ -13,10 +13,10 @@
 <body>
 
     <header>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav class="navbar has-background-warning-dark" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="/">
-                    Venue Views
+                <a class="navbar-item has-text-warning-light" href="/">
+                    Brew Buddy 🍺
                 </a>
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
                     data-target="navbarBasicExample">
@@ -27,10 +27,10 @@
             </div>
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a href="/search" class="navbar-item">
+                    <a href="/search" class="navbar-item has-text-warning-light">
                         Brewery Search
                     </a>
-                    <a href="/dashboard" class="navbar-item">
+                    <a href="/dashboard" class="navbar-item has-text-warning-light">
                         Dashboard
                     </a>
                 </div>
@@ -38,14 +38,14 @@
                     <div class="navbar-item">
                         <div class="buttons">
                             {{#if logged_in}}
-                            <a id="logout" class="button is-light">
+                            <a id="/logout" class="button is-warning-light">
                                 Log Out
                             </a>
                             {{else}}
-                            <a href="/signup" class="button is-primary">
-                                <strong>Sign up</strong>
+                            <a href="/signup" class="button is-warning-light">
+                                Sign up
                             </a>
-                            <a href="/login" class="button is-light">
+                            <a href="/login" class="button is-warning-light">
                                 Log in
                             </a>
                             {{/if}}
@@ -55,8 +55,11 @@
             </div>
         </nav>
     </header>
-    <div class="is-centered"> 
-    {{{ body }}}
+
+    <br>
+
+    <div class="is-repsonsive is-centered">
+        {{{ body }}}
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
