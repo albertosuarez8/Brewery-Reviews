@@ -5,60 +5,60 @@
         <div class="column dropdown is-active">
             <div class="dropdown-trigger">
                 <select id='statesSelect' class="dropdown-item" onchange="APIFetcher(this.value)">
-                        <option value="">Select a State</option>
-                        <option value="alabama">Alabama</option>
-                        <option value="alaska">Alaska</option>
-                        <option value="arizona">Arizona</option>
-                        <option value="arkansas">Arkansas</option>
-                        <option value="california">California</option> 
-                        <option value="colorado">Colorado</option>
-                        <option value="connecticut">Connecticut</option>
-                        <option value="delaware">Delaware</option>
-                        <option value="florida">Florida</option>
-                        <option value="georgia">Georgia</option>
-                        <option value="hawaii">Hawaii</option>
-                        <option value="idaho">Idaho</option>
-                        <option value="illinois">Illinois</option>
-                        <option value="kansas">Kansas</option>
-                        <option value="kentucky">Kentucky</option> 
-                        <option value="louisiana">Louisiana</option>
-                        <option value="maine">Maine</option>
-                        <option value="maryland">Maryland</option>
-                        <option value="massachusetts">Massachusetts</option>
-                        <option value="michigan">Michigan</option>
-                        <option value="minnesota">Minnesota</option>
-                        <option value="mississippi">Mississippi</option>
-                        <option value="missouri">Missouri</option>
-                        <option value="montana">Montana</option>
-                        <option value="nebraska">Nebraska</option> 
-                        <option value="nevada">Nevada</option>
-                        <option value="new_hampshire">New Hampshire</option>
-                        <option value="new_jersey">New Jersey</option>
-                        <option value="new_mexico">New Mexico</option>
-                        <option value="new_york">New York</option>
-                        <option value="north_carolina">North Carolina</option>
-                        <option value="north_dakota">North Dakota</option>
-                        <option value="ohio">Ohio</option>
-                        <option value="oklahoma">Oklahoma</option>
-                        <option value="oregon">Oregon</option> 
-                        <option value="pennsylvania">Pennsylvania</option>
-                        <option value="rhode_island">Rhode Island</option>
-                        <option value="south_carolina">South Carolina</option>
-                        <option value="south_dakota">South Dakota</option>
-                        <option value="tennessee">Tennessee</option> 
-                        <option value="texas">Texas</option>
-                        <option value="utah">Utah</option>
-                        <option value="vermont">Vermont</option> 
-                        <option value="virginia">Virginia</option>
-                        <option value="washington">Washington</option>
-                        <option value="west_virginia">West Virginia</option>
-                        <option value="wisconsin">Wisconsin</option>
-                        <option value="wyoming">Wyoming</option>
-                    </select>
+                    <option value="">Select a State</option>
+                    <option value="alabama">Alabama</option>
+                    <option value="alaska">Alaska</option>
+                    <option value="arizona">Arizona</option>
+                    <option value="arkansas">Arkansas</option>
+                    <option value="california">California</option>
+                    <option value="colorado">Colorado</option>
+                    <option value="connecticut">Connecticut</option>
+                    <option value="delaware">Delaware</option>
+                    <option value="florida">Florida</option>
+                    <option value="georgia">Georgia</option>
+                    <option value="hawaii">Hawaii</option>
+                    <option value="idaho">Idaho</option>
+                    <option value="illinois">Illinois</option>
+                    <option value="kansas">Kansas</option>
+                    <option value="kentucky">Kentucky</option>
+                    <option value="louisiana">Louisiana</option>
+                    <option value="maine">Maine</option>
+                    <option value="maryland">Maryland</option>
+                    <option value="massachusetts">Massachusetts</option>
+                    <option value="michigan">Michigan</option>
+                    <option value="minnesota">Minnesota</option>
+                    <option value="mississippi">Mississippi</option>
+                    <option value="missouri">Missouri</option>
+                    <option value="montana">Montana</option>
+                    <option value="nebraska">Nebraska</option>
+                    <option value="nevada">Nevada</option>
+                    <option value="new_hampshire">New Hampshire</option>
+                    <option value="new_jersey">New Jersey</option>
+                    <option value="new_mexico">New Mexico</option>
+                    <option value="new_york">New York</option>
+                    <option value="north_carolina">North Carolina</option>
+                    <option value="north_dakota">North Dakota</option>
+                    <option value="ohio">Ohio</option>
+                    <option value="oklahoma">Oklahoma</option>
+                    <option value="oregon">Oregon</option>
+                    <option value="pennsylvania">Pennsylvania</option>
+                    <option value="rhode_island">Rhode Island</option>
+                    <option value="south_carolina">South Carolina</option>
+                    <option value="south_dakota">South Dakota</option>
+                    <option value="tennessee">Tennessee</option>
+                    <option value="texas">Texas</option>
+                    <option value="utah">Utah</option>
+                    <option value="vermont">Vermont</option>
+                    <option value="virginia">Virginia</option>
+                    <option value="washington">Washington</option>
+                    <option value="west_virginia">West Virginia</option>
+                    <option value="wisconsin">Wisconsin</option>
+                    <option value="wyoming">Wyoming</option>
+                </select>
             </div>
         </div>
         <div class="column dropdown is-active">
-            <div class="dropdown-content">
+            <div class="dropdown-content" onchange="displayFrame(this.name); changeTitle(this.value)">
                 <select id="breweries">
                     <option value="">Select a Brewery</option>
                 </select>
@@ -76,14 +76,13 @@
         {{!-- Second column --}}
         <div class="container">
             <article class="message">
-                <div class="message-header has-background-warning-light">
-                    <p class="is-centered has-text-warning-dark">Brewery Name</p>
+                <div class="message-header is-centered is-right has-background-warning-light">
+                    <p class="has-text-warning-dark" id="selected-brewname">Brewery Name</p>
                 </div>
 
-                <div class="card">
+                <div class="container card">
                     <div class="card-image">
-                        <figure class="image is-5by6">
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        <figure class="image is-2by2" id="brewDisplay">
                         </figure>
                     </div>
                 </div>
