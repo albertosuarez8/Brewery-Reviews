@@ -24,7 +24,7 @@ Post.init(
             allowNull: false,
         },
         section: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         rating: {

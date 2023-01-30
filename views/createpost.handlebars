@@ -71,7 +71,8 @@
     const createPost = async (event) => {
         event.preventDefault();
         const description = document.querySelector('.text').value.trim();
-        const rating = document.querySelector('.rating').value.trim();
+        const ratingInt = document.querySelector('.rating').value.trim();
+        let rating = parseInt(ratingInt);
         if (description && rating && imageDataBase64 && section && stadium) {
             const response = await fetch('/api/posts', {
                 method: 'POST',
