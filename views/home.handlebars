@@ -1,35 +1,37 @@
 <main>
     <section>
-        <div class="container">
-            <article class="message">
+        <div class="columns is-centered">
+            <div class="message">
                 <div class="message-header has-background-warning-light">
                     <p class="has-text-warning-dark">🍺 Recently Featured 🍺</p>
                 </div>
-           {{#each posts as |post| }}
-                <div class="card">
-                    <div class="card-image">
+                <br>
+                {{#each posts as |post| }}
+
+                <div class="card column is-centered is-vcentered">
+
+                    <div class="media">
+                        <img class="" src="{{post.image}}">
                     </div>
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image is-28x28">
-                                    <img class="is-rounded" src="{{post.image}}"
-                                        >
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <p class="title is-4 has-text-warning-dark">{{post.user.name}}</p>
-                            </div>
-                        </div>
-                        <div class="content has-text-success-dark">
-                            Rating: {{post.rating}}
-                            Description: {{post.description}}
-                            <br>
-                            <time class="has-text-grey" datetime="2016-1-1">{{format_time post.date}}</time>
-                        </div>
+                    <div class="media-content">
+                        <p class="title is-4 has-text-warning-dark">{{post.user.name}}</p>
                     </div>
-                </div>
+                    <div class="content has-text-dark">
+                        <strong>State:</strong> {{post.stadium}}
+                        <br>
+                        <strong>Brewery Name:</strong> {{post.section}}
+                        <br>
+                        <strong>Rating:</strong> {{post.rating}}
+                        <br>
+                        <strong>Description:</strong> {{post.description}}
+                        <br>
+                        <time class="has-text-grey" datetime="2016-1-1">{{format_time post.date}}</time>
+                    </div>
+
+                </div> <br> {{/each}}
+            </div> 
         </div>
-        {{/each}}
+        <br>
+       
     </section>
 </main>
