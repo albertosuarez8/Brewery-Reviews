@@ -47,19 +47,22 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.render('login');
 })
 
-router.get('/dashboard/newpost', async (req, res) => {
+router.get('/dashboard/newpost', withAuth, async (req, res) => {
     try {
-        res.render('newpost');
+        res.render('newpost', {
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-router.get('/dashboard/newpost/createpost', async (req, res) => {
+router.get('/dashboard/newpost/createpost', withAuth, async (req, res) => {
     const stadium = req.query.stadium;
     const section = req.query.section;
     res.render('createpost', {
-        postDetail: {stadium: stadium, section: section}
+        postDetail: {stadium: stadium, section: section},
+        logged_in: req.session.logged_in
     });
 });
 
@@ -81,7 +84,9 @@ router.get('/signup', async (req, res) => {
 
 router.get('/search', async (req, res) => {
     try {
-        res.render('search');
+        res.render('search', {
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
