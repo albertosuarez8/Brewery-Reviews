@@ -1,12 +1,8 @@
 //adds event listener to sports selector so that the correct venues populate with the sport chosen
-var stateSelector = document.getElementById('states');
-var citySelector = document.getElementById('city');
-var breweryTypeSelector = document.getElementById('brewType');
-var brewerySelector = document.getElementById('breweries')
-stateSelector.addEventListener('click', APIFetcher);
-citySelector.addEventListener('click', loadBrewTypes);
-breweryTypeSelector.addEventListener('click', loadBreweries);
-brewerySelector.addEventListener('click', breweryDisplayer);
+var stateSelector = document.querySelector('#selectStateTemplate');
+var citySelector = document.querySelector('#city');
+var breweryTypeSelector = document.querySelector('#brewType');
+var brewerySelector = document.querySelector('#breweries')
 
 var apiData;
 
@@ -16,9 +12,8 @@ function APIFetcher() {
 	var selectedStateVal = document.querySelector('#states').value
 	var cityOptionsURL = 'https://api.openbrewerydb.org/breweries?by_state=' + selectedStateVal + '&per_page=50' 
 	fetch(cityOptionsURL)
-	.then(res => {
-        console.log(res);
-	return res.json();
+	.then(function (response) {
+        return response.json();
 	})
 	.then(data => {
         apiData = data;
@@ -28,31 +23,30 @@ function APIFetcher() {
 
 function loadCities() {
     let cityOptionsContainer = document.getElementById("City");
-    console.log(apiData)
 
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < apiData.length; i++) {
         // Dynamically creating new content
         let newCityOption = document.createElement("option");
         // add attributes
-        newCityOption.setAttribute("value", data[i].city);
+        newCityOption.setAttribute("value", apiData[i].city);
         // add content
-        newCityOption.textContent = data[i].city;
+        newCityOption.textContent = apiData[i].city;
         console.log(newCityOption);
         // ADD IT TO THE DOM
         cityOptionsContainer.append(newCityOption);
     }
 }
 
-function loadBrewTypes(data) {
+function loadBrewTypes() {
     let brewTypeOptionsContainer = document.getElementById("brewType");
 
-    for (var i = 0; i < dataNames.length; i++) {
+    for (var i = 0; i < apiData.length; i++) {
         // Dynamically creating new content
         let newBrewOption = document.createElement("option");
         // add attributes
-        newBrewOption.setAttribute("value", data[i].brewery_type);
+        newBrewOption.setAttribute("value", apiData[i].brewery_type);
         // add content
-        newBrewOption.textContent = data[i].brewery_type;
+        newBrewOption.textContent = apiData[i].brewery_type;
         console.log(newBrewOption);
 
         // ADD IT TO THE DOM
@@ -67,7 +61,7 @@ function loadBreweries(dataNames) {
         // Dynamically creating new content
         let newBreweriesOption = document.createElement("option");
         // add attributes
-        newBreweriesOption.setAttribute("value", data[i].website_url);
+        newBreweriesOption.setAttribute("value", data[i].id);
         // add content
         newBreweriesOption.textContent = dataNames[i].name;
         console.log(newBreweriesOption);
@@ -90,4 +84,9 @@ function breweryDisplayer(dataNames) {
 
         // ADD IT TO THE DOM
         breweryDisplayContainer.append(newBreweryDisplay);
-}
+};
+
+stateSelector.addEventListener('click', APIFetcher);
+citySelector.addEventListener('click', loadBrewTypes);
+breweryTypeSelector.addEventListener('click', loadBreweries);
+brewerySelector.addEventListener('click', breweryDisplayer);
