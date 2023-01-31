@@ -2,3 +2,9 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+@media only screen and (min-width: 750px) {
+    #cards {
+        width: 350px;
+    }
+}
