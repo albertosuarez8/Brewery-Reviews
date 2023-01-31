@@ -34,10 +34,10 @@ There are no steps needed for installation. Simply click the link and go to the 
 
 ## Credits
 
-Alberto Suarez - https://github.com/albertosuarez8
-Lian Perez - https://github.com/laps22
-Kennedy Hayles - https://github.com/kennedyisn
-Julia E. Devine - https://github.com/jujubea22
+- Alberto Suarez - https://github.com/albertosuarez8
+- Lian Perez - https://github.com/laps22
+- Kennedy Hayles - https://github.com/kennedyisn
+- Julia E. Devine - https://github.com/jujubea22
 
 ## License
 
