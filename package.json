@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/albertosuarez8/Project-2.git"
+    "url": "git+https://github.com/albertosuarez8/Brewery-Reviews.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/albertosuarez8/Project-2/issues"
+    "url": "https://github.com/albertosuarez8/Brewery-Reviews/issues"
   },
-  "homepage": "https://github.com/albertosuarez8/Project-2#readme",
+  "homepage": "https://github.com/albertosuarez8/Brewery-Reviews#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
@@ -26,11 +26,7 @@
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
-    "flowbite": "^1.6.2",
     "mysql2": "^3.0.1",
     "sequelize": "^6.28.0"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.2.4"
   }
 }
