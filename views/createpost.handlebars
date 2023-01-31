@@ -3,6 +3,8 @@
     {{!-- this is the upload and drag image section --}}
     <div class="container column" style="display: flex;">
         <div class="column card leftside">
+            <p>Add Image:</p>
+            <br>
             <div id="drop-area" accept="image/*" style="border: 2px solid; height: 250px; width: 250px;">
                 Drag Image here! (.pngs ONLY!)
             </div>
@@ -12,7 +14,7 @@
                     <input type="file" id="file-input" accept="image/*" style="display: none;">
                     <span class="has-background-warning-dark file-cta">
                         <span class="has-text-warning-light file-label">
-                            Upload a file…
+                            Upload 
                         </span>
                     </span>
                 </label>
@@ -24,9 +26,16 @@
         <div class="column rightside">
             {{!-- <input class="rating" placeholder="Input Rating Here">
             </input> --}}
+            <p>Rating:</p>
+            <br>
             <input id="sliderWithValue" oninput="this.nextElementSibling.value = this.value" class="slider has-output-tooltip is-fullwidth is-medium is-warning is-circle"
                 step="1" min="1" max="5" value="3" type="range">
             <output class="rating">3</output>
+            <br>
+            <br>
+            <br>
+
+            <p>Brewery Review:</p>
 
             <input class="input is-large text" type="text" placeholder="Input Review Here">
             {{!-- <textarea class="text" placeholder="Input Review Here"></textarea> --}}
@@ -71,7 +80,8 @@
     const createPost = async (event) => {
         event.preventDefault();
         const description = document.querySelector('.text').value.trim();
-        const rating = document.querySelector('.rating').value.trim();
+        const ratingInt = document.querySelector('.rating').value.trim();
+        let rating = parseInt(ratingInt);
         if (description && rating && imageDataBase64 && section && stadium) {
             const response = await fetch('/api/posts', {
                 method: 'POST',

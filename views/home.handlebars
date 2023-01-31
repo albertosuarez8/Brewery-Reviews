@@ -1,48 +1,37 @@
+<main>
+    <section>
+        <div class="columns is-centered">
+            <div class="message">
+                <div class="message-header has-background-warning-light">
+                    <p class="has-text-warning-dark">🍺 Recently Featured 🍺</p>
+                </div>
+                <br>
+                {{#each posts as |post| }}
 
-   <main>
-        <section>
-            <div class="container">
-                <article class="message">
-                    <div class="message-header has-background-warning-light">
-                        <p class="has-text-warning-dark">🍺 Recently Featured 🍺</p>
+                <div class="card column is-centered is-vcentered">
+
+                    <div class="media">
+                        <img class="" src="{{post.image}}">
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4 has-text-warning-dark">{{post.user.name}}</p>
+                    </div>
+                    <div class="content has-text-dark">
+                        <strong>State:</strong> {{post.stadium}}
+                        <br>
+                        <strong>Brewery Name:</strong> {{post.section}}
+                        <br>
+                        <strong>Rating:</strong> {{post.rating}}
+                        <br>
+                        <strong>Description:</strong> {{post.description}}
+                        <br>
+                        <time class="has-text-grey" datetime="2016-1-1">{{format_time post.date}}</time>
                     </div>
 
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-2by1">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-left">
-                                    <figure class="image is-28x28">
-                                        <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png"
-                                            alt="Placeholder image">
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <p class="title is-4 has-text-warning-dark">{{user.name}}</p>
-                                    <p class="subtitle is-6">{{user}}</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-success-dark">
-                                {{post.raitng}}
-                                {{post.description}}
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Phasellus nec iaculis mauris. 
-                                <br>
-                                <time class="has-text-grey" datetime="2016-1-1">{{post.date}}</time>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </section>
-    </main>
-
-
-    {{!-- Use this as an example when building with the data --}}
-    {{!-- {{#each posts as |post|}}
-    <img src="{{post.image}}"></img>
-    {{/each}} --}}
+                </div> <br> {{/each}}
+            </div> 
+        </div>
+        <br>
+       
+    </section>
+</main>

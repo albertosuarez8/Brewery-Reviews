@@ -92,4 +92,25 @@ router.get('/search', async (req, res) => {
     }
 });
 
+router.get('/search/:section', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findAll({
+            include: [{ model: User }],
+            where: { section: req.params.section }
+        })
+        const posts = postData.map((project) => project.get({ plain: true }));
+        posts.map(x=> {
+            x.image = Buffer.from(x.image).toString('base64');
+        })
+        for (z = 0; z < posts.length; z++) {
+            let splitImage = posts[z].image.split("dataimage/pngbase64");
+            let newImage = 'data:image/png;base64,' + splitImage[1];
+            posts[z].image =  newImage.slice(0,-1);
+        }
+        res.json(posts);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
 module.exports = router;
